@@ -1,0 +1,16 @@
+# Dataset
+/data/
+
+# Python
+__pycache__/
+*.pyc
+
+# Model checkpoints
+*.pth
+*.pt
+
+# Environment/config
+.env
+
+# IDE
+.vscode/
