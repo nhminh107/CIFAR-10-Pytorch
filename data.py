@@ -30,9 +30,8 @@ class ImageDataset(Dataset):
         if self.target_transform:
             label = self.target_transform(label)
 
-        print(image)
-        print(label)
-        return image, label 
+        label_int = cf.class_dict[label]
+        return image, label_int
     
 
 if __name__ == "__main__":  
@@ -45,7 +44,7 @@ if __name__ == "__main__":
                              std=[0.229, 0.224, 0.225])
     ])
 
-    img_d = ImageDataset(transform=data_transform)
+    img_d = ImageDataset()
     test1 = img_d.__getitem__(10)
     img = test1[0]
     img.show()

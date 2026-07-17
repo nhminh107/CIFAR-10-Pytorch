@@ -37,3 +37,10 @@ class CNN_Model(nn.Module):
         x = self.features(x)
         x = self.classifier(x) 
         return x 
+    
+
+if __name__ == "__main__":
+    model = CNN_Model()
+    x = torch.randn(64, 3, 32, 32)
+    x = model(x)
+    print(x.shape)
