@@ -15,13 +15,13 @@ class CNN_Model(nn.Module):
             nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, padding=1),
             nn.BatchNorm2d(32),
             nn.ReLU(), 
-            nn.Dropout(0.3), 
+            nn.Dropout(0.2), 
             nn.MaxPool2d(2), 
             #Final Layer 
             nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, padding=1), 
             nn.BatchNorm2d(64), 
             nn.ReLU(), 
-            nn.Dropout(0.3),
+            nn.Dropout(0.15),
             nn.MaxPool2d(2) 
         )
 
