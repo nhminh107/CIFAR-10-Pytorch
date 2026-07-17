@@ -39,7 +39,8 @@ train_imgs = DataLoader(train_dataset, batch_size=cf.batch_size, pin_memory=True
 valid_imgs = DataLoader(valid_dataset, batch_size=cf.batch_size, pin_memory=True, shuffle=True)
 
 best_valid_loss = 100
-for epoch in range(40):
+count = 0
+for epoch in range(100):
     cnn_model.train()
     print(f"Epoch: {epoch}")
 
@@ -101,9 +102,17 @@ for epoch in range(40):
     print(f"Valid loss {valid_loss/total_valid_img}")
 
     if (valid_loss/total_valid_img) < best_valid_loss:
-        best_valid_loss = valid_loss
+        best_valid_loss = valid_loss/total_valid_img
         torch.save(cnn_model.state_dict(), "best_model.pth")
         print(f"Save model as epoch {epoch}")
+        count = 0
+    
+    else:
+        count += 1
+    
+    if count == 5:
+        print("Early stopped")
+        break
 
     print("---------------------")
 
